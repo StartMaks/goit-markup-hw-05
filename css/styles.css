@@ -11,8 +11,55 @@
 	--footer-logo-part: #f4f4fd;
 	--footer-social-hover: #31d0aa;
 	--custumer-logo-color: #8e8f99;
+	--modal-bg-color: #fcfcfc;
+
 	--animation-function: cubic-bezier(0.4, 0, 0.2, 1);
 	--animation-duration: 250ms;
+}
+
+/* Modal */
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(46, 47, 66, 0.4);
+}
+
+.backdrop.is-hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	width: 408px;
+	height: 576px;
+	background-color: var(--modal-bg-color);
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+}
+
+.modal-close {
+	position: absolute;
+	display: flex;
+	top: 24px;
+	right: 24px;
+	align-items: center;
+	justify-content: center;
+
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+}
+
+.btn-modal {
+	fill: #000;
 }
 
 /* body */
@@ -629,7 +676,8 @@ img {
 	margin-bottom: auto;
 }
 
-.chapter .galary:hover .card-product {
+.chapter .galary:hover .card-product,
+.chapter .galary:focus .card-product {
 	transform: translateY(0);
 }
 
@@ -637,19 +685,13 @@ img {
 	position: absolute;
 	top: 0;
 	left: 0;
-
+	transform: translateY(100%);
+	transition: transform var(--animation-duration) va(--animation-function);
 	width: 360px;
 	height: 300px;
 	padding: 40px 32px;
 	background-color: rgba(77, 90, 229, 0.8);
-	color: var(--footeer-logo-part);
-
-	transform: translateY(100%);
-	transition: transform var(--animation-duration) var(--animation-function);
-}
-
-.chapter .galary:focus {
-	box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+	color: var(--footer-logo-part);
 }
 
 /* Visually hidden */

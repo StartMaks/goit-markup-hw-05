@@ -13,6 +13,7 @@
 	--custumer-logo-color: #8e8f99;
 	--modal-bg-color: #fcfcfc;
 	--modal-btn-color: #000000;
+
 	--animation-function: cubic-bezier(0.4, 0, 0.2, 1);
 	--animation-duration: 250ms;
 }
@@ -20,21 +21,25 @@
 /* Modal */
 
 .backdrop {
+	transition: opacity 250ms var(--animation-duration);
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	background: rgba(46, 47, 66, 0.4);
+
+	opacity: 1;
 }
 
 .backdrop.is-hidden {
 	opacity: 0.1;
 	pointer-events: none;
+	/* visibility: ; */
 }
 
 .backdrop.is-hidden .modal {
-	transform: translate(50%, -50%) rotate(180deg) scale(1.8, 1.8);
+	transform: translate(-50%, -50%) rotate(180deg) scale(1.8, 1.8);
 	opacity: 0;
 }
 
@@ -44,10 +49,9 @@
 	left: 50%;
 	transform: translate(-50%, -50%) rotate(0) scale(1, 1);
 	transition: transform 400ms var(--animation-function), box-shadow var(--animation-duration) var(--animation-function),
-		opacity 400ms var(--animation-duration) var(--animation-function);
+		opacity 400ms var(--animation-function);
 	opacity: 1;
 
-	cursor: pointer;
 	width: 408px;
 	height: 576px;
 	background-color: var(--modal-bg-color);
@@ -57,13 +61,15 @@
 
 .modal-close {
 	position: absolute;
+	transition: background-color var(--animation-duration) var(--animation-function);
+
 	display: flex;
 	top: 24px;
 	right: 24px;
 	align-items: center;
 	justify-content: center;
-	transition: background-color var(--animation-duration) var(--animation-function);
 
+	cursor: pointer;
 	width: 24px;
 	height: 24px;
 	border-radius: 50%;
@@ -108,6 +114,10 @@ body {
 
 	/* outline: 2px solid green; */
 }
+/* .logo,
+.chapter {
+  outline: 1px solid red;
+} */
 
 .list {
 	list-style: none;
@@ -139,11 +149,11 @@ body {
 
 .site-nav .link.current {
 	position: relative;
-	color: var(--acent-color);
+	color: var(--accent-color);
 }
 
 .site-nav .link::after,
-site-nav .link::after {
+.site-nav .link::after {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -151,7 +161,7 @@ site-nav .link::after {
 	display: block;
 	width: 100%;
 	height: 4px;
-	background-color: var(--acent-color);
+	background-color: var(--accent-color);
 	border-radius: 2px;
 
 	transform: scale(0, 0);
@@ -159,7 +169,7 @@ site-nav .link::after {
 }
 
 .site-nav .link:hover::after,
-.site-nav .lik:focus::after {
+.site-nav .link:focus::after {
 	transform: scale(1, 1);
 }
 
@@ -171,7 +181,7 @@ site-nav .link::after {
 	display: block;
 	width: 100%;
 	height: 4px;
-	background-color: var(--acent-color);
+	background-color: var(--accent-color);
 	border-radius: 2px;
 
 	transform: scale(1);
@@ -180,6 +190,7 @@ site-nav .link::after {
 .site-nav .link {
 	position: relative;
 	transition: color var(--animation-duration) var(--animation-function);
+
 	display: block;
 	padding-top: 24px;
 	padding-bottom: 24px;
@@ -206,6 +217,7 @@ site-nav .link::after {
 
 .ping {
 	transition: color var(--animation-duration) var(--animation-function);
+
 	color: var(--main-text-color);
 
 	font-style: normal;
@@ -256,7 +268,7 @@ site-nav .link::after {
 	margin-left: auto;
 	margin-right: auto;
 	background-image: linear-gradient(to right, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-		url(..//images/people-office1.jpg);
+		url(../images/people-office1.jpg);
 	background-color: var(--secondary-background-color);
 	background-repeat: no-repeat;
 	background-position: center;
@@ -282,6 +294,7 @@ site-nav .link::after {
 
 .push {
 	transition: background-color var(--animation-duration) var(--animation-function);
+
 	border-radius: 4px;
 	margin: 0;
 	padding: 16px 32px;
@@ -378,11 +391,9 @@ ul {
 	display: block;
 	height: 112px;
 	margin-bottom: 8px;
-
 	background-color: var(--footer-logo-part);
 	border-radius: 4px;
 	background-repeat: no-repeat;
-
 	background-position: center;
 }
 
@@ -418,9 +429,9 @@ ul {
 /* Team */
 
 .section.tint {
-	/* max-width: 1440px;
+	max-width: 1440px;
 	margin-left: auto;
-	margin-right: auto; */
+	margin-right: auto;
 	padding-top: 120px;
 	padding-bottom: 120px;
 }
@@ -439,6 +450,9 @@ ul {
 .team-nav .chapter:not(:last-child) {
 	margin-right: 24px;
 }
+/* .team-nav .chapter + .chapter {
+  margin-left: 24px;
+} */
 
 .team-name {
 	padding: 32px 16px;
@@ -460,6 +474,7 @@ ul {
 
 .btn-social {
 	transition: background-color var(--animation-duration) var(--animation-function);
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -497,13 +512,13 @@ ul {
 }
 
 .client-page {
+	transition: border var(--animation-duration) var(--animation-function);
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* text-align: center; */
 	width: 168px;
 	height: 88px;
-	/* padding: 16px 32px; */
 	border: 1px solid var(--custumer-logo-color);
 	border-radius: 4px;
 }
@@ -539,9 +554,9 @@ footer {
 }
 
 .section.foot {
-	/* max-width: 1440px;
+	max-width: 1440px;
 	margin-left: auto;
-	margin-right: auto; */
+	margin-right: auto;
 	padding-top: 100px;
 	padding-bottom: 100px;
 }
@@ -586,6 +601,7 @@ footer {
 
 .foot-link-back {
 	transition: background-color var(--animation-duration) var(--animation-function);
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -622,6 +638,7 @@ footer {
 	transition: background-color var(--animation-duration) var(--animation-function),
 		color var(--animation-duration) var(--animation-function),
 		box-shadow var(--animation-duration) var(--animation-function);
+
 	border-radius: 4px;
 	padding: 12px 24px;
 	min-width: 69px;
@@ -654,9 +671,6 @@ footer {
 .btn-list .chapter:not(:last-child) {
 	margin-right: 24px;
 }
-/* .btn-list .chapter + .chapter {
-  margin-left: 24px;
-} */
 
 /* Portfolio's cards */
 
@@ -701,6 +715,11 @@ img {
 	text-decoration-line: none;
 }
 
+.chapter .galary:hover,
+.chapter .galary:focus {
+	box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
 .img-product {
 	position: relative;
 	overflow: hidden;
@@ -722,9 +741,11 @@ img {
 	left: 0;
 	transform: translateY(100%);
 	transition: transform var(--animation-duration) var(--animation-function);
+
 	width: 360px;
 	height: 300px;
 	padding: 40px 32px;
+
 	background-color: rgba(77, 90, 229, 0.8);
 	color: var(--footer-logo-part);
 }
